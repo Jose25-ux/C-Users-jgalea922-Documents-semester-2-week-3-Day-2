@@ -1,62 +1,60 @@
-// Initialize book shelf array with some books
-let books = ["The Great Gatsby", "Sons and Lovers", "To Kill a Mockingbird", "Harry Potter", "Percy Jackson"];
+// Initialize book shelf array with some books 
+let books = [
+    "The Great Gatsby",
+    "Sons and Lovers",
+    "To Kill a Mockingbird",
+    "Harry Potter",
+    "Percy Jackson"
+];
 
 // Add book to the front using unshift
-function AddToFront() {
+function addToFront() {
     let bookInput = document.getElementById("bookInput");
-    let newBook = bookInput.value.trim(); // Use 'value' instead of 'ariaValueMax'
-    console.log(newBook);
+    let newBook = bookInput.value.trim();
     if (newBook) {
-        books.unshift(newBook); // Add to 'books' array, not 'bookInput'
-        bookInput.value = ''; // Clear input field
-        displayBooks(); // Correct function name
+        books.unshift(newBook);
+        bookInput.value = '';
+        displayBooks();
     }
 }
 
 // Add book to the end using push
-function AddToEnd() {
+function addToEnd() {
     let bookInput = document.getElementById("bookInput");
-    let newBook = bookInput.value.trim(); // Use 'value' instead of 'ariaValueMax'
-    console.log(newBook);
+    let newBook = bookInput.value.trim();
     if (newBook) {
-        books.push(newBook); // Add to 'books' array, not 'bookInput'
-        bookInput.value = ''; // Clear input field
-        displayBooks(); // Correct function name
+        books.push(newBook);
+        bookInput.value = '';
+        displayBooks();
     }
 }
 
-// Remove book from the front using shift
+// Remove book from the front using shift 
 function removeFromFront() {
     if (books.length > 0) {
-        const removedBook = books.shift(); // Remove from 'books' array
-        console.log(removedBook);
-        displayBooks(); // Correct function name
+        books.shift();
+        displayBooks();
     }
 }
 
 // Remove book from the end using pop
 function removeFromEnd() {
     if (books.length > 0) {
-        const removedBook = books.pop(); // Remove from 'books' array
-        console.log(removedBook);
-        displayBooks(); // Correct function name
+        books.pop();
+        displayBooks();
     }
 }
 
-// Display current books
+// Display current books 
 function displayBooks() {
-    let bookList = document.getElementById("booklist");
-    let html = `<strong>Front of Shelf:</strong><br>`;
-
-    // Loop to display the array elements
-    books.forEach((book, index) => {
-        html += `${index + 1}. ${book}<br>`;
+    let bookListDiv = document.getElementById("bookList");
+    let html = `<strong>Front of shelf</strong><ol>`;
+    books.forEach((book) => {
+        html += `<li>${book}</li>`;
     });
-
-    html += `<strong>End of Shelf</strong>`;
-    bookList.innerHTML = html;
+    html += `</ol><strong>End of Shelf</strong>`;
+    bookListDiv.innerHTML = html;
 }
 
-// Call displayBooks function initially
+// Call displayBooks function on load
 displayBooks();
-console.log(books);
